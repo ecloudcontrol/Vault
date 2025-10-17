@@ -11,7 +11,7 @@ build:
     image_template: vault-1.2
 
 deploy:
-    context: tradeideas/PROD
+    context: vv/PROD
     type: statefulset
     ingress: none
     replicas: 1
