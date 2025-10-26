@@ -32,7 +32,6 @@ volumes:
     name: data
     size: 5Gi
     matchLabels: false
-
 properties:
     ENABLE_AUTO_PASSWORD: False
     revision: 73
