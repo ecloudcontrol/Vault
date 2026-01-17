@@ -18,6 +18,13 @@ deploy:
     port:
     - 8200
     - 80
+    nodeSelector:
+      nodepool: clickhouse
+    tolerations:
+      - key: nodepool
+        operator: Equal
+        value: clickhouse
+        effect: NoSchedule
 
 volumes:
   - claim: vault-home
