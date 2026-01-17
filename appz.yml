@@ -34,4 +34,4 @@ volumes:
     matchLabels: false
 properties:
     ENABLE_AUTO_PASSWORD: False
-    revision: 78
+    revision: 7
