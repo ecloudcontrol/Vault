@@ -1,35 +1,44 @@
 app:
     name: Vault
     code: VAULT
-    notify: appz@ecloudcontrol.com
+    notify: kullas@maximaconsulting.com
 
 build:
     version: 0.4
-    env: DEV
+    env: PROD
     build_file: none
     output_files: output/*.zip
-    image_template: vault-1.2
+    image_template: vault-1.16
 
 deploy:
-    context: alpha/DEV
+    context: viralvue/PROD
     type: statefulset
     ingress: none
     replicas: 1
     port:
     - 8200
     - 80
+    nodeSelector:
+      nodepool: cloudorbit
+    tolerations:
+      - key: nodepool
+        operator: Equal
+        value: cloudorbit
+        effect: NoSchedule
 
 volumes:
   - claim: vault-home
+    class: linode-block-storage
     mount: /appz/home
     name: home
     size: 5Gi
+    matchLabels: false
   - claim: vault-data
+    class: linode-block-storage
     mount: /appz/data
     name: data
     size: 5Gi
-
+    matchLabels: false
 properties:
-    revision: 27
-    ENABLE_AUTO_PASSWORD: True
-    
+    ENABLE_AUTO_PASSWORD: False
+    revision: 9
