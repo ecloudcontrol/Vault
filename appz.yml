@@ -19,11 +19,11 @@ deploy:
     - 8200
     - 80
     nodeSelector:
-      nodepool: cloudorbit
+      nodepool: clickhouse
     tolerations:
       - key: nodepool
         operator: Equal
-        value: cloudorbit
+        value: clickhouse
         effect: NoSchedule
 
 volumes:
