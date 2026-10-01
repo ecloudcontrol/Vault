@@ -5,26 +5,20 @@ app:
 
 build:
     version: 0.4
-    env: PROD
+    env: DEV1
     build_file: none
     output_files: output/*.zip
     image_template: vault-1.2
 
 deploy:
-    context: tradeideas/PROD
+    context: alpha/DEV1
     type: statefulset
     ingress: none
     replicas: 1
     port:
     - 8200
     - 80
-    nodeSelector:
-      nodepool: toplist
-    tolerations:
-      - key: nodepool
-        operator: Equal
-        value: toplist
-        effect: NoSchedule
+
 
 volumes:
   - claim: vault-home
@@ -40,4 +34,4 @@ volumes:
 
 properties:
     ENABLE_AUTO_PASSWORD: False
-    revision: 68
+    revision: 0
